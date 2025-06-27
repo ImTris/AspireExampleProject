@@ -1,0 +1,11 @@
+{
+  "name": ".NET Aspire",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:9.0-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/powershell:1": {}
+  },
+  "onCreateCommand": "dotnet new install Aspire.ProjectTemplates::9.1.0 --force && wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash",
+  "postCreateCommand": "dotnet restore && dapr init",
+  "postStartCommand": "dotnet dev-certs https --trust"
+}
